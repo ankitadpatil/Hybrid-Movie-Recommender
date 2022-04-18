@@ -1,0 +1,10 @@
+/data/movie_similarity_matrix.pkl
+/data/ratings.tsv
+/data/ratings.csv
+/data/movies.csv
+/data/movies_metadata.csv
+/data/movie_content.csv
+/data/keywords.csv
+/data/clean_content.csv
+
+/recommender_app/movie_similarity_matrix.pkl

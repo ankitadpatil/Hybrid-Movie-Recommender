@@ -13,7 +13,7 @@ st.header('Personalized Movie Recommendations')
 #Data imports
 df_content = pd.read_csv('clean_content.csv')
 df_user = pd.read_csv('ratings_title.csv')
-
+df_user.rename(columns={'userId':'user_id', 'movieId':'movie_id'}, inplace=True)
 content_similarity = pickle.load(open('movie_similarity_matrix.pkl', 'rb'))
 df_content_sim = pd.DataFrame(content_similarity, index = df_content['title'].values, columns= df_content['title'].values)
 
@@ -33,15 +33,15 @@ for _ in range(number):
 if st.button('Get Recommendations'):
 
     #Add new_user_data to user database
-    new_userId = df_user['userId'].sort_values().values[-1] + 1
+    new_userId = df_user['user_id'].sort_values().values[-1] + 1
     new_user = []
     for movie,rating in new_user_data:
         new_ratings = {}
-        new_ratings['userId'] = new_userId
+        new_ratings['user_id'] = new_userId
         new_ratings['rating'] = rating
-        new_ratings['movieId'] = df_content[df_content['title'] == movie]['movieId'].values[0]
+        new_ratings['movie_id'] = df_content.loc[df_content['title'] == movie, 'movie_id'].values[0]
         new_ratings['title'] = movie
-        new_ratings['genres'] = df_content.loc[df_content['title'] == movie]['genres'].values[0]
+        new_ratings['genres'] = df_content.loc[df_content['title'] == movie, 'genres'].values[0]
         new_ratings['year'] = df_content[df_content['title'] == movie]['year'].values[0]
         new_user.append(new_ratings)
 
@@ -51,7 +51,7 @@ if st.button('Get Recommendations'):
     df_user = pd.concat([df_user, df_new_user])
 
     #Create User-Item Matrix
-    user_item = df_user.pivot_table(values = 'rating', index = 'userId', columns= 'title')  #Changed from movieId to title
+    user_item = df_user.pivot_table(values = 'rating', index = 'user_id', columns= 'title')
 
     #Normalize User-Item matrix
     norm_user_item = user_item.subtract(user_item.mean(axis=1), axis = 'rows')
@@ -144,6 +144,3 @@ if st.button('Get Recommendations'):
         return recommendations.sort_values(by='Similarity Score', ascending=False)
 
     st.table(hybrid_recommender(new_userId))
-
-
-
