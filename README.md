@@ -25,7 +25,11 @@ Given a database of users and their movie ratings, can we build a recommender th
 
 ### Data Exploration 
 
-![]()
+![](https://github.com/ankitadpatil/Hybrid-Movie-Recommender/blob/main/images/ratings.png)
+![](https://github.com/ankitadpatil/Hybrid-Movie-Recommender/blob/main/images/average_rating.png)
+![](https://github.com/ankitadpatil/Hybrid-Movie-Recommender/blob/main/images/genre_popularity.png)
+![](https://github.com/ankitadpatil/Hybrid-Movie-Recommender/blob/main/images/genre_ratings.png)
+![](https://github.com/ankitadpatil/Hybrid-Movie-Recommender/blob/main/images/ratings_per_movie.png)
 
 ### Approach
 
