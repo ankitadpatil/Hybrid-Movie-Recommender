@@ -23,6 +23,10 @@ Given a database of users and their movie ratings, can we build a recommender th
 
 - **[TMDB](https://www.themoviedb.org/?language=en-US)**: Movie popularity, tagline, synopsis, keywords, director and cast data comes from TMDB. The TMDB database is less popular than IMDb, but unlike IMDb, it is driven by the user community and has much more diverse features as mentioned above. This data is taken from [Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset).
 
+### Data Exploration 
+
+![]()
+
 ### Approach
 
 The project is built on the assumption that users have only watched the movies they have rated. If a user has not rated a movie, then the user has not seen the movie and can be recommended to the user.
